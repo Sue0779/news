@@ -1,10 +1,15 @@
+# config.py (wersja przykładowa na git)
 
-# Konfiguracja serwera SMTP
-SMTP_HOST = "twój_host_smtp"
-SMTP_PORT = 465  # zazwyczaj 465 dla SSL
-SMTP_USER = "twój_adres_email"
-SMTP_PASSWORD = "twoje_hasło"
+SMTP_USER = "twoj_email@example.com"  # wpisz własny adres email
+SMTP_PASSWORD = "twoje_haslo"         # wpisz własne hasło
+SMTP_HOST = "smtp.example.com"        # wpisz własny host SMTP
+SMTP_PORT = 465                       # zwykle port 465 dla SMTP_SSL
 
-# Adresy e-mail
-EMAIL_FROM = "twój_adres_email"
-EMAIL_TO = "adres_email_odbiorcy"
+ODBIORCA = "odbiorca@example.com"     # adres odbiorcy wiadomości
+
+# Przykładowe kanały RSS (możesz dowolnie zmieniać)
+RSS_FEEDS = {
+    'Onet': 'https://wiadomosci.onet.pl/rss',
+    'WP': 'https://wiadomosci.wp.pl/rss.xml',
+    'TVN24': 'https://tvn24.pl/najnowsze.xml'
+}
