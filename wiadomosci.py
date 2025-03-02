@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import smtplib
 from email.mime.text import MIMEText
-from config import SMTP_USER, SMTP_PASSWORD, SMTP_HOST, SMTP_PORT, ODBIORCA
+from config import SMTP_USER, SMTP_PASSWORD, SMTP_HOST, SMTP_PORT, ODBIORCA, RSS_FEEDS
 
 # Funkcja pobierająca pełne treści artykułów (z uwzględnieniem specjalnego wstępu)
 def pobierz_pelny_artykul(url, liczba_paragrafow=10):
@@ -35,17 +35,10 @@ def pobierz_artykuly_rss(url, limit=5):
         artykuly.append((tytul, link, pelny_artykul))
     return artykuly
 
-# Adresy kanałów RSS
-rss_feeds = {
-    'Onet': 'https://wiadomosci.onet.pl/rss',
-    'WP': 'https://wiadomosci.wp.pl/rss.xml',
-    'TVN24': 'https://tvn24.pl/najnowsze.xml'
-}
-
 # Zebranie artykułów (format HTML)
 tresc = "<h2>Dzisiejsze najnowsze wiadomości:</h2>"
 
-for nazwa, url in rss_feeds.items():
+for nazwa, url in RSS_FEEDS.items():
     tresc += f"<h3>{nazwa}</h3>"
     artykuly = pobierz_artykuly_rss(url, limit=15)
     for tytul, link, opis in artykuly:
